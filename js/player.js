@@ -62,22 +62,51 @@ class Enemy {
 }
 
 class Shot {
-  constructor(playerInfo) {
+  constructor(player) {
     this.width = 50;
     this.height = 25;
-    this.x = playerInfo.x;
-    this.y = playerInfo.y;
+    this.x = player.x + player.width
+    this.y = player.y + (player.height / 2) - 12
     this.velocity = 2
   }
 
-  draw(playerInfo) {
-      image(game.shotImage, this.x + playerInfo.width, this.y + (playerInfo.height / 2) - 12, this.width, this.height)
+  draw() {
+      image(game.shotImage, this.x, this.y, this.width, this.height)
       
     }
 
   update() {
     this.x += 5;
   }
+
+  collisionWithShot(enemyInfo){
+    // get the middle of shot
+    let shotX = this.x + (this.width / 2)
+    let shotY = this.y + (this.height / 2)
+    // get the middle of enemy
+    let enemyX = enemyInfo.x + (enemyInfo.width / 2)
+    let enemyY = enemyInfo.randomY + (enemyInfo.height / 2)
+    let distance = dist(shotX, shotY, enemyX, enemyY)
+    if(distance <= 50){
+      return true
+    }
+    return false
+  }
+
+  // switch(difficulty){
+  //   case "easy":
+  //     this.speed = Math.random() * 2.801 + 1
+  //     break;
+  //   case "medium":
+  //     this.speed = Math.random() * 2.801 + 2
+  //     break;
+  //   case "hard":
+  //     this.speed = Math.random() * 3.001 + 3
+  //     break;
+  //   case "impossible":
+  //     this.speed = Math.random() * 3.001 + 4
+  //     break;
+  // }
 }
 
 
