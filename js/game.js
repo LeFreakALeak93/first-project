@@ -12,6 +12,8 @@ class Game {
     this.enemies = [];
     this.shots = [];
     this.score = 0;
+    this.myAudio;
+    this.myAudio2;
 
     const difficulty = localStorage.getItem('difficulty');
         
@@ -38,8 +40,10 @@ class Game {
     this.enemyImage = loadImage("./assets/tie-fighter.png");
     this.shotImage = loadImage("./assets/shot.png");
     this.shotEnemyImage = loadImage("./assets/shot1.png");
-    let myAudio = document.querySelector("#audio");
-    myAudio.play();
+    // let myAudio = document.querySelector("#audio");
+    // myAudio.play();
+    this.myAudio = createAudio("./assets/audio/theme-song.mp3")
+    this.myAudio.play()
     this.myAudio2 = document.querySelector("#audio2")
   }
 
@@ -105,7 +109,6 @@ class Game {
     // check for collision between shot and enemies
     for (let i = 0; i < this.enemies.length; i++) {
       for(let j = 0; j < this.shots.length; j++) {
-        console.log("Check for collision!")
               const enemy = this.enemies[i];
       if (this.shots[j].collisionWithShot(enemy)) {
         // increase score by 100
@@ -153,6 +156,10 @@ class Game {
         fill("red");
         textSize(100);
         text("Game over!", 260, 300);
+        3
+        
+        this.myAudio.pause();
+        this.myAudio.currentTime = 0;
         noLoop();
       } else {
         return false;

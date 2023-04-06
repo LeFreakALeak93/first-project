@@ -110,6 +110,7 @@ class Shot {
     let enemyY = enemyInfo.randomY + (enemyInfo.height / 2)
     let distance = dist(shotX, shotY, enemyX, enemyY)
     if(distance <= 100){
+      console.log(distance)
       return true
     }
     return false
