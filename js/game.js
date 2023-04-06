@@ -27,12 +27,7 @@ class Game {
     else if (difficulty === 'hard') {
       console.log("difficulty: HARD")
     }
-    else if (difficulty === 'impossible') {
-      console.log("difficulty: IMPOSSIBLE")
-    }
   }
-
-
 
   preload() {
     this.background.backgroundImage = loadImage("./assets/background.jpg");
@@ -40,8 +35,6 @@ class Game {
     this.enemyImage = loadImage("./assets/tie-fighter.png");
     this.shotImage = loadImage("./assets/shot.png");
     this.shotEnemyImage = loadImage("./assets/shot1.png");
-    // let myAudio = document.querySelector("#audio");
-    // myAudio.play();
     this.myAudio = createAudio("./assets/audio/theme-song.mp3")
     this.myAudio.play()
     this.myAudio2 = document.querySelector("#audio2")
@@ -52,6 +45,8 @@ class Game {
       fill("yellow");
       textSize(100);
       text("You won!", 260, 300);
+      this.myAudio.pause();
+      this.myAudio.currentTime = 0;
       noLoop();
     }
   }
@@ -76,35 +71,16 @@ class Game {
          game.shots.push(new Shot(game.player))
          this.myAudio2.play();
        }
- 
 
     // Every x frames we want to push a new enemy into the array
     if (frameCount % 90 === 0) {
       this.enemies.push(new Enemy(this.enemyImage));
     }
 
-    // Every x frames we want to push a new shot into the array
-    // if (frameCount % 90 === 0) {
-    //   this.shots.push(new Shot(this.shotImage));
-    // }
-
-    // Every x frames we want to push a new enemyShot into the array
-    // if (frameCount % 90 === 0) {
-    //   this.shots.push(new Shot(this.shotEnemyImage));
-    // }
-
     // Draw the enemies
     this.enemies.forEach((enemy) => {
       enemy.draw();
     });
-
-    // this.obstacles = this.obstacles.filter((obstacle) => {
-    //   if (obstacle.collision(this.player) || obstacle.x < -obstacle.width) {
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // });
 
     // check for collision between shot and enemies
     for (let i = 0; i < this.enemies.length; i++) {
@@ -118,26 +94,12 @@ class Game {
         this.shots.splice(j, 1);
         // remove enemy
        this.enemies.splice(i, 1);
-        // exit loop, because bullet can only hit one enemy
+        // exit loop, because shot can only hit one enemy
         break;
       }
       }
     }
   }
-
-  // collision() {
-  //   // Check for collision with enemy
-  //    this.enemies.forEach(enemy => {
-  //     if(this.player.x + this.player.width > enemy.x &&
-  //       this.player.y + this.player.height > enemy.y &&
-  //       this.player.x < enemy.x &&
-  //       this.player.y < enemy.y + enemy.height)
-  //       {
-  //         console.log("Spaceship hit!")
-  //       }
-
-  //    })
-  // }
 
   collision() {
     // check collision between player and enemy or player and shot
@@ -156,8 +118,7 @@ class Game {
         fill("red");
         textSize(100);
         text("Game over!", 260, 300);
-        3
-        
+        // pause audio and reset current time when game over
         this.myAudio.pause();
         this.myAudio.currentTime = 0;
         noLoop();
@@ -166,28 +127,4 @@ class Game {
       }
     });
   }
-
-  // checkForShot() {
-  //   // check collision between shot and enemy
-  //   for (let i = 0; i < this.shots.length; i++) {
-  //     // for (let j = 0; j < this.enemies.length; j++) {
-  //       // console.log(this.shots[i])
-  //       if (
-  //         this.shots[i].x > this.enemy.x &&
-  //         this.shots[i].y > this.enemy.randomY &&
-  //         this.shots[i].y < this.enemy.randomY + this.enemy.height
-  //       ) {
-  //         this.shots.splice(i, 1);
-  //         this.enemies.splice(j, 1);
-  //         console.log("collision!")
-  //         this.score += 100;
-  //         document.querySelector("span").innerText = this.score;
-  //         this.checkWinningCondition();
-  //       } else {
-  //         return false;
-  //       }
-  //     }
-  //   }
-
-
 }

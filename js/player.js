@@ -80,7 +80,6 @@ class Enemy {
       this.shotX -= 10
     }
   }
-  
 }
 
 class Shot {
@@ -115,21 +114,6 @@ class Shot {
     }
     return false
   }
-
-  // switch(difficulty){
-  //   case "easy":
-  //     this.speed = Math.random() * 2.801 + 1
-  //     break;
-  //   case "medium":
-  //     this.speed = Math.random() * 2.801 + 2
-  //     break;
-  //   case "hard":
-  //     this.speed = Math.random() * 3.001 + 3
-  //     break;
-  //   case "impossible":
-  //     this.speed = Math.random() * 3.001 + 4
-  //     break;
-  // }
 }
 
 

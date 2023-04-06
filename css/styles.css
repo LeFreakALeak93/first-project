@@ -36,17 +36,6 @@
   align-items: center;
 }
 
-/* .navigation button {
-  padding: 15px;
-  margin: 15px 5px;
-  font-size: 20px;
-  background-color: bisque;
-  box-shadow: inset 3px 8px 30px 4px rgba(255, 247, 247, 0.69);
-  border-radius: 5%;
-  color: black;
-  font-weight: lighter;
-} */
-
 .button, select {
   align-items: center;
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
@@ -70,6 +59,10 @@
   white-space: nowrap;
   cursor: pointer;
   margin: 25px;
+}
+
+.button--new-margin {
+  margin: 10px;
 }
 
 .button:active,
