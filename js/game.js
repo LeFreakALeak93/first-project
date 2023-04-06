@@ -45,9 +45,9 @@ class Game {
       fill("yellow");
       textSize(100);
       text("You won!", 260, 300);
+      noLoop();
       this.myAudio.pause();
       this.myAudio.currentTime = 0;
-      noLoop();
     }
   }
 
