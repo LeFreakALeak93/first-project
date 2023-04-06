@@ -12,9 +12,9 @@ function draw() {
   game.draw()
 
   // Move the player
-  if(keyIsDown(32)) {
-    game.shots.push(new Shot(game.player))
-  }
+  // if(keyIsDown(32)) {
+  //   game.shots.push(new Shot(game.player))
+  // }
   if(keyIsDown(LEFT_ARROW)) {
       game.player.moveLeft()
   }

@@ -12,13 +12,29 @@
       <div class="navigation">
         <h1>Space Invaders</h1>
         <div class="navigation-buttons">
-          <button id="start-button">Start game</button>
+          <button class="button" id="start-button" role="button">
+            <span class="text">Start game</span>
+          </button>
           <script type="text/javascript">
             document.getElementById("start-button").onclick = function () {
               location.href = "game.html";
             };
           </script>
-          <button class="difficulty">Change difficulty</button>
+          <select name="difficulty" id="difficulty">
+            <option id="change-difficulty">Change difficulty</option>
+            <option value="easy"><span class="text">EASY</span></option>
+            <option value="medium"><span class="text">MEDIUM</span></option>
+            <option value="hard"><span class="text">HARD</span></option>
+          </select>
+          <script>
+            const startGameButton = document.getElementById('start-button');
+            startGameButton.addEventListener('click', function() {
+              const difficultySelect = document.getElementById('difficulty');
+              const difficulty = difficultySelect.value;
+              localStorage.setItem('difficulty', difficulty);
+              // window.open('game.html', '_blank');
+            });
+          </script>
         </div>
       </div>
     </div>

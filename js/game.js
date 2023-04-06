@@ -12,30 +12,25 @@ class Game {
     this.enemies = [];
     this.shots = [];
     this.score = 0;
+
+    const difficulty = localStorage.getItem('difficulty');
+        
+    // Set the difficulty of the game based on the stored value
+    if (difficulty === 'easy') {
+      console.log("difficulty: EASY")
+    }
+    else if (difficulty === 'medium') {
+      console.log("difficulty: MEDIUM")
+    }
+    else if (difficulty === 'hard') {
+      console.log("difficulty: HARD")
+    }
+    else if (difficulty === 'impossible') {
+      console.log("difficulty: IMPOSSIBLE")
+    }
   }
 
-  // switch(difficulty){
-  //   case "easy":
-  //     this.spawnInterval = 80; // spawn a zombie every 60 frames
-  //     this.lowestPossibleSpawnInterval = 25
-  //     this.highscore = localStorage.getItem('highscore-easy')
-  //     break;
-  //   case "medium":
-  //     this.spawnInterval = 60
-  //     this.lowestPossibleSpawnInterval = 20
-  //     this.highscore = localStorage.getItem('highscore-medium')
-  //     break;
-  //   case "hard":
-  //     this.spawnInterval = 30
-  //     this.lowestPossibleSpawnInterval = 12
-  //     this.highscore = localStorage.getItem('highscore-hard')
-  //     break;
-  //   case "impossible":
-  //     this.spawnInterval = 20
-  //     this.lowestPossibleSpawnInterval = 8
-  //     this.highscore = localStorage.getItem('highscore-impossible')
-  //     break;
-  // }
+
 
   preload() {
     this.background.backgroundImage = loadImage("./assets/background.jpg");
@@ -45,6 +40,7 @@ class Game {
     this.shotEnemyImage = loadImage("./assets/shot1.png");
     let myAudio = document.querySelector("#audio");
     myAudio.play();
+    this.myAudio2 = document.querySelector("#audio2")
   }
 
   checkWinningCondition() {
@@ -67,11 +63,16 @@ class Game {
     if (this.shots.length != 0) {
       this.shots.forEach((shot) => {
         shot.draw(this.player);
-        // let audio = new Audio("./assets/audio/blaster-shot.mp3")
-        // this.play(audio)
+         
         shot.update();
       });
     }
+
+    if(keyIsDown(32)) {
+         game.shots.push(new Shot(game.player))
+         this.myAudio2.play();
+       }
+ 
 
     // Every x frames we want to push a new enemy into the array
     if (frameCount % 90 === 0) {
@@ -104,6 +105,7 @@ class Game {
     // check for collision between shot and enemies
     for (let i = 0; i < this.enemies.length; i++) {
       for(let j = 0; j < this.shots.length; j++) {
+        console.log("Check for collision!")
               const enemy = this.enemies[i];
       if (this.shots[j].collisionWithShot(enemy)) {
         // increase score by 100

@@ -49,6 +49,18 @@ class Enemy {
     this.shotX = this.x 
     this.enemyShot = this.x;
     this.randomY = Math.floor(1 + (Math.random() * 9)) * 100;
+
+    switch(difficulty){
+      case "easy":
+        this.velocity = 2
+        break;
+      case "medium":
+        this.velocity = 5
+        break;
+      case "hard":
+        this.velocity = 10
+        break;
+    }
   }
 
   draw() {
@@ -58,7 +70,17 @@ class Enemy {
     if (this.x <= 900)
     image(game.shotEnemyImage, this.shotX + (this.width / 2),  this.randomY, this.width, this.height)
     this.shotX -= 3.5
+    if(difficulty === "easy") {
+      this.shotX -= 2
+    }
+    else if(difficulty === "medium") {
+      this.shotX -= 5
+    }
+    else if(difficulty === "hard") {
+      this.shotX -= 10
+    }
   }
+  
 }
 
 class Shot {
@@ -87,7 +109,7 @@ class Shot {
     let enemyX = enemyInfo.x + (enemyInfo.width / 2)
     let enemyY = enemyInfo.randomY + (enemyInfo.height / 2)
     let distance = dist(shotX, shotY, enemyX, enemyY)
-    if(distance <= 50){
+    if(distance <= 100){
       return true
     }
     return false

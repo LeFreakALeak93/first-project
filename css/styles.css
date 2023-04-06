@@ -1,34 +1,33 @@
+.maincontainer {
+  background: url("../assets/startscreen-background.jpg");
+  background-size: cover;
+  height: 80vh;
+  width: 80vw;
+  margin: 10%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  .maincontainer {
-    background: url("../assets/startscreen-background.jpg");
-    background-size: cover;
-    height: 80vh;
-    width: 80vw;
-    margin: 10%;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-  }
-
-.navigation {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
 }
 
-  .navigation h1 {
-    color: white;
-    font-size: 7.5em;
-    text-shadow: 10px 5px 10px black;
-    text-transform: uppercase;
-    margin: 0;
-  }
+.navigation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navigation h1 {
+  color: white;
+  font-size: 7.5em;
+  text-shadow: 10px 5px 10px black;
+  text-transform: uppercase;
+  margin: 0;
+}
 
 .navigation-buttons {
   display: flex;
@@ -37,16 +36,74 @@
   align-items: center;
 }
 
-  .navigation button {
-    padding: 15px;
-    margin: 15px 5px;
-    font-size: 20px;
-    background-color: bisque;
-    box-shadow: inset 3px 8px 30px 4px rgba(255,247,247,0.69);
-    border-radius: 5%;
-    color: black;
-    font-weight: lighter;
+/* .navigation button {
+  padding: 15px;
+  margin: 15px 5px;
+  font-size: 20px;
+  background-color: bisque;
+  box-shadow: inset 3px 8px 30px 4px rgba(255, 247, 247, 0.69);
+  border-radius: 5%;
+  color: black;
+  font-weight: lighter;
+} */
+
+.button, select {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 25px;
+}
+
+.button:active,
+.button:hover {
+  outline: 0;
+}
+
+.button span,
+select {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  transition: 300ms;
+}
+
+.button:hover span,
+select:hover option {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button,
+  select {
+    font-size: 24px;
+    min-width: 196px;
   }
+}
+
+
+
+
+
+
 
 
 

@@ -23,10 +23,27 @@
     </style>
   </head>
   <body>
-    <h1>Defeat all tie fighters to win against the empire!</h1>
+    <h1>Defeat all tie-fighers to win against the empire!</h1>
     <p>Score: <span>0</span></p>
     <!-- <script src="js/obstacle.js"></script> -->
     <audio id="audio" src="./assets/audio/theme-song.mp3"></audio>
+    <audio id="audio2" src="./assets/audio/blaster-shot.mp3"></audio>
+    <script>
+      //Set Difficulty
+      const difficulty = localStorage.getItem("difficulty");
+
+      // Set the difficulty of the game based on the stored value
+      if (difficulty === "easy") {
+        console.log("difficulty: EASY");
+      } else if (difficulty === "medium") {
+        console.log("difficulty: MEDIUM");
+      } else if (difficulty === "hard") {
+        console.log("difficulty: HARD");
+      } 
+      else {
+        console.log("difficulty default");
+      }
+    </script>
     <script src="js/background.js"></script>
     <script src="js/player.js"></script>
     <script src="js/game.js"></script>
